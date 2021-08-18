@@ -1,4 +1,6 @@
-
+# NAME : SAKSHI SINGH
+# ROLL NO: 1901EE76
+# TUT 01 CODE
 """This function will detect if a number is meraki number"""
 
 def meraki_helper(n):
