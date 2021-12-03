@@ -1,0 +1,121 @@
+<!DOCTYPE html>                                                                                 <!--document type declaration-->
+<html>
+    <head>
+        <title>GUI Based Transcript Generator</title>                                           <!--defining the title of the html document-->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width = device-width, initial-scale = 1">
+    </head>
+
+    <style>                                                                                     /*defining styles for various html components using CSS*/
+        header{
+            font-size: 30px;
+            text-align: center;
+            color: white;
+            background-color: lightskyblue;
+        }
+
+        .content{
+            margin-top: 200px;
+            height: 400px;
+            margin: 100px;
+            max-width: 1400px;
+            background-color: mediumaquamarine;
+        }
+
+        table {
+            border-collapse: separate;
+            border-spacing: 20px 35px;
+        }
+
+        label{
+            font-size: 20px;
+            font-weight: bold;
+            color: black;
+            padding: 5px;
+            margin: 5px;
+            border: 1px solid white;
+        }
+
+        body{
+            background-color: mediumaquamarine;
+        }
+
+        td{
+            padding: 0 150px;
+        }
+
+        .txt{
+            width: 160px;
+        }
+
+        .msg{                                                                                   /*hiding the ginger text used to flash the error message*/
+            visibility: hidden;
+        }
+
+        .flashmsg{                                                                              /*flashing the error message in red*/
+            color: red;
+        }
+
+    </style>
+
+    <body>
+        <header class = "heading"><h1>GUI Based Transcript Generator</h1></header>             <!--defining a header for the document-->
+        <div class = "content">
+            <form class = "gui" action = "" method = "post" enctype = multipart/form-data>     <!--defining a form with the method as POST-->
+                <table>                                                                        <!--creating a table for holding the form components-->
+                    <tr>
+                        <td><label>Browse for grades.csv : </label></td>                       <!--defining a label for uploading csv file-->
+                        <td><input type = "file" name = "csvfile1" value = "" accept = ".csv" required></td>    <!--creating a browse button to upload csv file-->
+                    </tr>
+
+                    <tr>
+                        <td><label>Browse for names-roll.csv : </label></td>
+                        <td><input type = "file" name = "csvfile2" value = "" accept = ".csv" required></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><label>Browse for subjects_master.csv : </label></td>
+                        <td><input type = "file" name = "csvfile3" value = "" accept = ".csv" required></td>
+                    </tr>
+
+                    <tr>
+                        <td><label>Upload Seal (optional) : </label></td>                       <!--creating a browse button to upload seal and signature image-->
+                        <td><input type = "file" name = "imagefile1" value = "" accept = ".png"></td>
+                    </tr>
+
+                    <tr>
+                        <td><label>Upload Signature (optional) : </label></td>
+                        <td><input type = "file" name = "imagefile2" value = "" accept = ".png"></td>
+                    </tr>
+
+                    <tr>
+                        <td><label>Please Enter roll no range : </label></td>                   <!--asking user to input a range of roll nos -->
+                        <td><input class = "txt" type = "text" name = "range_start" required><span> </span><input class = "txt" type = "text" name = "range_end" required></td>
+                    </tr>
+
+                    <tr>
+                        <td><input type = "submit" name = "action" value = "Generate Transcripts for Given Roll Numbers"></td>      <!--creating submit buttons for generating transcripts-->
+                        <td><input type = "submit" name = "action" value = "Generate Transcripts for all students"></td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div class = "msg">
+                                {% with messages = get_flashed_messages() %}        <!--using ginger text to display flash messages-->
+                                {% if messages %}
+                                {% for message in messages %}
+                            </div>
+                            <span class = "flashmsg">{{message}}</span>
+                            <div class = "msg">
+                                {% endfor %}
+                                {% endif %}
+                                {% endwith %}
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>
