@@ -73,6 +73,7 @@ def index():
             generate_pdf_all(path4,path5)
 
         if len(list) != 0:                                                          #checking if the size of list is non-zero
+            flash("Following Roll Numbers don't Exists:")
             flash(list)                                                             #that is if all roll nos exist
 
         return redirect(request.url)
